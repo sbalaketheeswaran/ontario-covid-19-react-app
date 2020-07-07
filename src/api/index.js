@@ -7,7 +7,6 @@ export const fetchAllPublicHealthUnitData = async () => {
         const {
             data
         } = await axios.get(url);
-        console.log(data)
         return data;
     } catch (error) {
         console.log(error);
