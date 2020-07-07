@@ -47,7 +47,7 @@ export default function Cards(props) {
                     {props.publicHealthUnit.publicHealthUnit.Outcome.NotResolved}
                     </Typography>
                     <Typography className={classes.pos} color="textSecondary">
-                    adjective
+                    Not Recovered
                     </Typography>
                 </CardContent>
                 </Card>
@@ -59,7 +59,7 @@ export default function Cards(props) {
                     {props.publicHealthUnit.publicHealthUnit.Outcome.Fatal}
                     </Typography>
                     <Typography className={classes.pos} color="textSecondary">
-                    adjective
+                    Fatal
                     </Typography>
                 </CardContent>
                 </Card>
