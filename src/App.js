@@ -24,6 +24,12 @@ class App extends React.Component {
     }
 
     this.setState( {data: phuIdMap} );
+
+    //Setting Toronto Public Health as default on load
+    if(phuIdMap.has('Toronto Public Health'))
+      {
+        this.handleCityChange('Toronto Public Health');
+      }
   }
 
   handleCityChange = async (selectedPhu) => {
@@ -42,8 +48,8 @@ class App extends React.Component {
     return (
       <div className={styles.container}>
       <h1>Ontario Public Health Unit City Data</h1>
-      <ComboBox data ={[ ...data.keys() ]} handleCityChange={this.handleCityChange}/>
-      <Cards publicHealthUnit={phuMetrics}/>
+      <ComboBox data ={[ ...data.keys() ]} handleCityChange={this.handleCityChange} default='Toronto Public Health'/>
+      <Cards data={phuMetrics}/>
       </div>
     );
   }

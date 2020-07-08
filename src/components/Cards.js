@@ -9,6 +9,8 @@ const useStyles = makeStyles({
   root: {
     minWidth: 275,
     margin: '5% 2%',
+    alignItems: 'center',
+    alignText : 'center'
   },
   bullet: {
     display: 'inline-block',
@@ -25,14 +27,14 @@ const useStyles = makeStyles({
 
 export default function Cards(props) {
   const classes = useStyles();
-  if(props.publicHealthUnit.publicHealthUnit){
+  if(props.data.publicHealthUnit){
     return (
-        <Grid container spacing={3}>
+          <Grid container spacing={3}>
             <Grid item xs={12} md={4}>
                 <Card className={classes.root}>
                 <CardContent>
                     <Typography variant="h5" component="h2">
-                    {props.publicHealthUnit.publicHealthUnit.Outcome.Recovered}
+                    {props.data.publicHealthUnit.Outcome.Recovered}
                     </Typography>
                     <Typography className={classes.pos} color="textSecondary">
                     Recovered
@@ -44,7 +46,7 @@ export default function Cards(props) {
             <Card className={classes.root}>
                 <CardContent>
                     <Typography variant="h5" component="h2">
-                    {props.publicHealthUnit.publicHealthUnit.Outcome.NotResolved}
+                    {props.data.publicHealthUnit.Outcome.NotResolved}
                     </Typography>
                     <Typography className={classes.pos} color="textSecondary">
                     Not Recovered
@@ -56,7 +58,7 @@ export default function Cards(props) {
             <Card className={classes.root}>
                 <CardContent>
                     <Typography variant="h5" component="h2">
-                    {props.publicHealthUnit.publicHealthUnit.Outcome.Fatal}
+                    {props.data.publicHealthUnit.Outcome.Fatal}
                     </Typography>
                     <Typography className={classes.pos} color="textSecondary">
                     Fatal

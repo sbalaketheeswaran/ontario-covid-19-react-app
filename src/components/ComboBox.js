@@ -9,6 +9,7 @@ export default function ComboBox(props) {
             id="combo-box-demo"
             options={props.data}
             style={{ width: 300 }}
+            defaultValue={props.default}
             renderInput={(params) => <TextField {...params} label="Public Health Units" variant="outlined" />}
             onChange={(event, selectedValue) => props.handleCityChange(selectedValue)}
         />
