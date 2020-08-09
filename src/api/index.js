@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const url = 'http://localhost:3000/PublicHealthUnit';
+const url = 'https://covid-19-in-ontario-rest-api.herokuapp.com/PublicHealthUnit';
 
 export const fetchAllPublicHealthUnitData = async () => {
     try {
