@@ -25,16 +25,29 @@ const useStyles = makeStyles({
   },
 });
 
-export default function Cards(props) {
+export default function Cards({data}) {
   const classes = useStyles();
-  if(props.data.publicHealthUnit){
+  console.log(data[0])
+  if(data[0]){
     return (
           <Grid container spacing={3}>
-            <Grid item xs={12} md={4}>
+            <Grid item xs={12} md={3}>
                 <Card className={classes.root}>
                 <CardContent>
                     <Typography variant="h5" component="h2">
-                    {props.data.publicHealthUnit.Outcome.Recovered}
+                    {data[0].Total}
+                    </Typography>
+                    <Typography className={classes.pos} color="textSecondary">
+                    Total
+                    </Typography>
+                </CardContent>
+                </Card>
+            </Grid>
+            <Grid item xs={12} md={3}>
+            <Card className={classes.root}>
+                <CardContent>
+                    <Typography variant="h5" component="h2">
+                    {data[0].Recovered}
                     </Typography>
                     <Typography className={classes.pos} color="textSecondary">
                     Recovered
@@ -42,23 +55,23 @@ export default function Cards(props) {
                 </CardContent>
                 </Card>
             </Grid>
-            <Grid item xs={12} md={4}>
+            <Grid item xs={12} md={3}>
             <Card className={classes.root}>
                 <CardContent>
                     <Typography variant="h5" component="h2">
-                    {props.data.publicHealthUnit.Outcome.NotResolved}
+                    {data[0].NotResolved}
                     </Typography>
                     <Typography className={classes.pos} color="textSecondary">
-                    Not Recovered
+                    Not Resolved
                     </Typography>
                 </CardContent>
                 </Card>
             </Grid>
-            <Grid item xs={12} md={4}>
+            <Grid item xs={12} md={3}>
             <Card className={classes.root}>
                 <CardContent>
                     <Typography variant="h5" component="h2">
-                    {props.data.publicHealthUnit.Outcome.Fatal}
+                    {data[0].Fatal}
                     </Typography>
                     <Typography className={classes.pos} color="textSecondary">
                     Fatal
