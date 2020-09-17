@@ -23,7 +23,7 @@ export default function SimpleTable(props) {
         <Table className={classes.table} aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell>Public Health Unit</TableCell>
+              <TableCell>Public Health ID</TableCell>
               <TableCell align="right">Total</TableCell>
               <TableCell align="right">Recovered</TableCell>
               <TableCell align="right">Not Resolved</TableCell>
@@ -36,10 +36,10 @@ export default function SimpleTable(props) {
                 <TableCell component="th" scope="row">
                 {row.PublicHealthUnit}
                 </TableCell>
-                <TableCell align="right">{row.Outcome.Total}</TableCell>
-                <TableCell align="right">{row.Outcome.Recovered}</TableCell>
-                <TableCell align="right">{row.Outcome.NotResolved}</TableCell>
-                <TableCell align="right">{row.Outcome.Fatal}</TableCell>
+                <TableCell align="right">{row.Total}</TableCell>
+                <TableCell align="right">{row.Recovered}</TableCell>
+                <TableCell align="right">{row.NotResolved}</TableCell>
+                <TableCell align="right">{row.Fatal}</TableCell>
               </TableRow>
             ))}
           </TableBody>

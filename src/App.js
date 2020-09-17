@@ -3,13 +3,16 @@ import Cards from "./components/Cards"
 import SimpleTable from "./components/Table"
 import { fetchAllPublicHealthUnitData, fetchOntarioMetaCovidCases } from './api/index';
 import styles from './App.module.css'
+import orderBy from "lodash/orderBy";
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       data: [],
-      ontario_meta : {}
+      ontario_meta : {},
+      columnToSort: "Total",
+      sortDirection: "desc"
     }
   }
 
@@ -19,7 +22,7 @@ class App extends React.Component {
     if(phu_result)
     {
       for (const {Outcome, PublicHealthUnit} of phu_result) {
-        phuList.push({Outcome, PublicHealthUnit})
+        phuList.push({...Outcome, PublicHealthUnit})
       }
     }
 
@@ -29,13 +32,17 @@ class App extends React.Component {
   }
 
   render() {
-    const { data, ontario_meta} = this.state;
+    const { data, ontario_meta, columnToSort, sortDirection} = this.state;
 
     return (
       <div className={styles.container}>
       <h1>Ontario Public Health Unit City Data</h1>
       <Cards data={ontario_meta}/>
-      <SimpleTable data={data}/>
+      <SimpleTable data={orderBy(
+              data,
+              columnToSort,
+              sortDirection
+            )}/>
       </div>
     );
   }
