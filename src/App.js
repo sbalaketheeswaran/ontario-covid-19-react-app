@@ -12,8 +12,12 @@ class App extends React.Component {
       data: [],
       ontario_meta : {},
       columnToSort: "Total",
-      sortDirection: "desc"
+      sortDirection: "desc",
     }
+  }
+
+  handleSort(columnName){
+    console.log(columnName)
   }
 
   async componentDidMount() {
@@ -38,7 +42,7 @@ class App extends React.Component {
       <div className={styles.container}>
       <h1>Ontario Public Health Unit City Data</h1>
       <Cards data={ontario_meta}/>
-      <SimpleTable data={orderBy(
+      <SimpleTable handleSort = {this.handleSort} columnToSort = {columnToSort} sortDirection = {sortDirection} data={orderBy(
               data,
               columnToSort,
               sortDirection

@@ -7,12 +7,21 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-
+import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
+import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
 const useStyles = makeStyles({
   table: {
     minWidth: 650,
   },
 });
+
+const rowHeaderCells = [
+  { id: 'PublicHealthUnit', numeric: false, label: 'Public Health ID' },
+  { id: 'Total', numeric: true, label: 'Total' },
+  { id: 'Recovered', numeric: true, label: 'Recovered' },
+  { id: 'NotRecovered', numeric: true, label: 'Not Resolved' },
+  { id: 'Fatal', numeric: true, label: 'Fatal' },
+];
 
 export default function SimpleTable(props) {
   const classes = useStyles();
@@ -23,17 +32,29 @@ export default function SimpleTable(props) {
         <Table className={classes.table} aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell>Public Health ID</TableCell>
-              <TableCell align="right">Total</TableCell>
-              <TableCell align="right">Recovered</TableCell>
-              <TableCell align="right">Not Resolved</TableCell>
-              <TableCell align="right">Fatal</TableCell>
+            {rowHeaderCells.map((rowHeadCell) => ( 
+            <TableCell
+            key={rowHeadCell.id}
+            align={rowHeadCell.numeric ? 'right' : 'left'}
+            onClick={() => props.handleSort(rowHeadCell.id)}
+          >
+          <span>{rowHeadCell.label}</span>
+              {props.columnToSort === rowHeadCell.id ? (
+                props.sortDirection === "desc" ? (
+                  <ArrowDownwardIcon />
+                ) : (
+                  <ArrowUpwardIcon />
+                )
+              ) : null}
+
+          </TableCell>
+        ))}
             </TableRow>
           </TableHead>
           <TableBody>
             {props.data.map((row) => ( 
               <TableRow key={row.PublicHealthUnit}>
-                <TableCell component="th" scope="row">
+                <TableCell align="left" component="th" scope="row">
                 {row.PublicHealthUnit}
                 </TableCell>
                 <TableCell align="right">{row.Total}</TableCell>
