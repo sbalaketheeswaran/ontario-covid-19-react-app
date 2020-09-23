@@ -7,8 +7,8 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
-import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
+import TableSortLabel from '@material-ui/core/TableSortLabel';
+
 const useStyles = makeStyles({
   table: {
     minWidth: 650,
@@ -36,17 +36,14 @@ export default function SimpleTable(props) {
             <TableCell
             key={rowHeadCell.id}
             align={rowHeadCell.numeric ? 'right' : 'left'}
-            onClick={() => props.handleSort(rowHeadCell.id)}
           >
-          <span>{rowHeadCell.label}</span>
-              {props.columnToSort === rowHeadCell.id ? (
-                props.sortDirection === "desc" ? (
-                  <ArrowDownwardIcon />
-                ) : (
-                  <ArrowUpwardIcon />
-                )
-              ) : null}
-
+              <TableSortLabel
+              active={props.columnToSort  === rowHeadCell.id}
+              direction={props.columnToSort  === rowHeadCell.id ? props.sortDirection : 'asc'}
+              onClick={() => props.handleSort(rowHeadCell.id)}
+            >
+              {rowHeadCell.label}
+            </TableSortLabel>
           </TableCell>
         ))}
             </TableRow>
