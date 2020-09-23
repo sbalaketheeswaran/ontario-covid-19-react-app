@@ -1,55 +1,64 @@
 import React from 'react';
-import ComboBox from "./components/ComboBox"
 import Cards from "./components/Cards"
-import { fetchAllPublicHealthUnitData, fetchByPublicHealthUnitID } from './api/index';
+import SimpleTable from "./components/Table"
+import { fetchAllPublicHealthUnitData, fetchOntarioMetaCovidCases } from './api/index';
 import styles from './App.module.css'
+import orderBy from "lodash/orderBy";
+
+const invertDirection = {
+  asc: "desc",
+  desc: "asc"
+};
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: new Map(),
-      phuMetrics : {}
+      data: [],
+      ontario_meta : {},
+      columnToSort: "Total",
+      sortDirection: "desc",
     }
+    this.handleSort = this.handleSort.bind(this)
+  }
+
+  handleSort(columnName){
+    this.setState(state => ({
+      columnToSort: columnName,
+      sortDirection:
+        state.columnToSort === columnName
+          ? invertDirection[state.sortDirection]
+          : "asc"
+    }));
   }
 
   async componentDidMount() {
-    const { result } = await fetchAllPublicHealthUnitData();
-    let phuIdMap = new Map()
-    if(result)
+    const { result : phu_result } = await fetchAllPublicHealthUnitData();
+    let phuList = [];
+    if(phu_result)
     {
-      for (const {PublicHealthUnit , id} of result) {
-        phuIdMap.set(PublicHealthUnit,id)
+      for (const {Outcome, PublicHealthUnit} of phu_result) {
+        phuList.push({...Outcome, PublicHealthUnit})
       }
     }
 
-    this.setState( {data: phuIdMap} );
+    const { result : ontario_meta_result} = await fetchOntarioMetaCovidCases();
 
-    //Setting Toronto Public Health as default on load
-    if(phuIdMap.has('Toronto Public Health'))
-      {
-        this.handleCityChange('Toronto Public Health');
-      }
-  }
-
-  handleCityChange = async (selectedPhu) => {
-    if(selectedPhu){
-      const { data } = this.state
-
-      let selectedPhuId = data.get(selectedPhu)
-
-      const result  = await fetchByPublicHealthUnitID(selectedPhuId);
-      this.setState( {data, phuMetrics: result});
-    }
+    this.setState( {data: phuList, ontario_meta: ontario_meta_result} );
   }
 
   render() {
-    const { data, phuMetrics} = this.state;
+    const { data, ontario_meta, columnToSort, sortDirection} = this.state;
+
     return (
       <div className={styles.container}>
       <h1>Ontario Public Health Unit City Data</h1>
-      <ComboBox data ={[ ...data.keys() ]} handleCityChange={this.handleCityChange} default='Toronto Public Health'/>
-      <Cards data={phuMetrics}/>
+      <Cards data={ontario_meta}/>
+      <SimpleTable handleSort = {this.handleSort} columnToSort = {columnToSort} sortDirection = {sortDirection} data={orderBy(
+              data,
+              columnToSort,
+              sortDirection
+            )}/>
       </div>
     );
   }
