@@ -19,7 +19,7 @@ const rowHeaderCells = [
   { id: 'PublicHealthUnit', numeric: false, label: 'Public Health ID' },
   { id: 'Total', numeric: true, label: 'Total' },
   { id: 'Recovered', numeric: true, label: 'Recovered' },
-  { id: 'NotRecovered', numeric: true, label: 'Not Resolved' },
+  { id: 'NotResolved', numeric: true, label: 'Not Resolved' },
   { id: 'Fatal', numeric: true, label: 'Fatal' },
 ];
 

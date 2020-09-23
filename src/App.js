@@ -5,6 +5,11 @@ import { fetchAllPublicHealthUnitData, fetchOntarioMetaCovidCases } from './api/
 import styles from './App.module.css'
 import orderBy from "lodash/orderBy";
 
+const invertDirection = {
+  asc: "desc",
+  desc: "asc"
+};
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -14,10 +19,17 @@ class App extends React.Component {
       columnToSort: "Total",
       sortDirection: "desc",
     }
+    this.handleSort = this.handleSort.bind(this)
   }
 
   handleSort(columnName){
-    console.log(columnName)
+    this.setState(state => ({
+      columnToSort: columnName,
+      sortDirection:
+        state.columnToSort === columnName
+          ? invertDirection[state.sortDirection]
+          : "asc"
+    }));
   }
 
   async componentDidMount() {
