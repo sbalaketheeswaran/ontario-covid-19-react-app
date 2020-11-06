@@ -16,6 +16,7 @@ class App extends React.Component {
     this.state = {
       data: [],
       ontario_meta : {},
+      last_synced : "",
       columnToSort: "Total",
       sortDirection: "desc",
     }
@@ -42,17 +43,17 @@ class App extends React.Component {
       }
     }
 
-    const { result : ontario_meta_result} = await fetchOntarioMetaCovidCases();
+    const { result : ontario_meta_result, lastSynced : last_synced_UTC_date} = await fetchOntarioMetaCovidCases();
 
-    this.setState( {data: phuList, ontario_meta: ontario_meta_result} );
+    this.setState( {data: phuList, ontario_meta: ontario_meta_result, last_synced: new Date(last_synced_UTC_date).toDateString(`YYYY-MM-DD`)});
   }
 
   render() {
-    const { data, ontario_meta, columnToSort, sortDirection} = this.state;
-
+    const { data, ontario_meta, last_synced, columnToSort, sortDirection} = this.state;
     return (
       <div className={styles.container}>
       <h1>Ontario Public Health Unit City Data</h1>
+      <p>Last synched at : {last_synced}</p>
       <Cards data={ontario_meta}/>
       <SimpleTable handleSort = {this.handleSort} columnToSort = {columnToSort} sortDirection = {sortDirection} data={orderBy(
               data,
