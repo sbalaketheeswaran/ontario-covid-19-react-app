@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/sbalaketheeswaran/ontario-covid-19-react-app/static/css/main.d0e80729.chunk.css",
-    "main.js": "/sbalaketheeswaran/ontario-covid-19-react-app/static/js/main.97637dfd.chunk.js",
-    "main.js.map": "/sbalaketheeswaran/ontario-covid-19-react-app/static/js/main.97637dfd.chunk.js.map",
-    "runtime-main.js": "/sbalaketheeswaran/ontario-covid-19-react-app/static/js/runtime-main.66e28366.js",
-    "runtime-main.js.map": "/sbalaketheeswaran/ontario-covid-19-react-app/static/js/runtime-main.66e28366.js.map",
-    "static/js/2.f62590c3.chunk.js": "/sbalaketheeswaran/ontario-covid-19-react-app/static/js/2.f62590c3.chunk.js",
-    "static/js/2.f62590c3.chunk.js.map": "/sbalaketheeswaran/ontario-covid-19-react-app/static/js/2.f62590c3.chunk.js.map",
-    "index.html": "/sbalaketheeswaran/ontario-covid-19-react-app/index.html",
-    "precache-manifest.be21784c15d5ef0cc8cc1abad7db34df.js": "/sbalaketheeswaran/ontario-covid-19-react-app/precache-manifest.be21784c15d5ef0cc8cc1abad7db34df.js",
-    "service-worker.js": "/sbalaketheeswaran/ontario-covid-19-react-app/service-worker.js",
-    "static/css/main.d0e80729.chunk.css.map": "/sbalaketheeswaran/ontario-covid-19-react-app/static/css/main.d0e80729.chunk.css.map",
-    "static/js/2.f62590c3.chunk.js.LICENSE.txt": "/sbalaketheeswaran/ontario-covid-19-react-app/static/js/2.f62590c3.chunk.js.LICENSE.txt"
+    "main.css": "ontario-covid-19-react-app/static/css/main.d0e80729.chunk.css",
+    "main.js": "ontario-covid-19-react-app/static/js/main.97637dfd.chunk.js",
+    "main.js.map": "ontario-covid-19-react-app/static/js/main.97637dfd.chunk.js.map",
+    "runtime-main.js": "ontario-covid-19-react-app/static/js/runtime-main.66e28366.js",
+    "runtime-main.js.map": "ontario-covid-19-react-app/static/js/runtime-main.66e28366.js.map",
+    "static/js/2.f62590c3.chunk.js": "ontario-covid-19-react-app/static/js/2.f62590c3.chunk.js",
+    "static/js/2.f62590c3.chunk.js.map": "/ontario-covid-19-react-app/static/js/2.f62590c3.chunk.js.map",
+    "index.html": "/ontario-covid-19-react-app/index.html",
+    "precache-manifest.be21784c15d5ef0cc8cc1abad7db34df.js": "/ontario-covid-19-react-app/precache-manifest.be21784c15d5ef0cc8cc1abad7db34df.js",
+    "service-worker.js": "/ontario-covid-19-react-app/service-worker.js",
+    "static/css/main.d0e80729.chunk.css.map": "/ontario-covid-19-react-app/static/css/main.d0e80729.chunk.css.map",
+    "static/js/2.f62590c3.chunk.js.LICENSE.txt": "/ontario-covid-19-react-app/static/js/2.f62590c3.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.66e28366.js",
