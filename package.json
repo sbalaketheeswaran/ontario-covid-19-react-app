@@ -16,7 +16,7 @@
     "react-dom": "^16.13.1",
     "react-scripts": "^3.4.4"
   },
-  "homepage": "https://github.com/sbalaketheeswaran/ontario-covid-19-react-app/",
+  "homepage": "https://sbalaketheeswaran.github.io/ontario-covid-19-react-app",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
